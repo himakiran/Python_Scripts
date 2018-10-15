@@ -10,13 +10,12 @@ import collections as cols
 fdesc=open("email_pass.txt","r")
 email_pwd_dict={}
 passwds=[]
-for each in fdesc:
-	email_pwd=each.split(":")
+for line in fdesc.readlines():
+	line=line.strip()
+	email_pwd=line.split(":")	
 	try:
 		email=email_pwd[0]
 		pwd=email_pwd[1]
-		#remove newline char from pwd
-		pwd=pwd[:len(pwd)-1]
 		email_pwd_dict[email]=pwd
 		passwds.append(pwd)
 	except Exception as e:
